@@ -1,6 +1,6 @@
 --[[
 Request buffer to send multiple requests to a server in one call.
-Copyright (c) 2015 Misael Madrigal Torres
+Copyright (c) 2015 Misael Madrigal Torres.
 https://github.com/misaelmt/RequestBuffer
 ]]--
 
