@@ -32,4 +32,5 @@ buffer:add(tostring(myTable))
 buffer:add(tostring("Hello\nworld"))
 
 local str = "Hello\nworld"
-print("str: " .. str:gsub("\n", ""))
+str = str:gsub("\n", "")
+print("str: " .. str)

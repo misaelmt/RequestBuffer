@@ -9,49 +9,50 @@ local buffer = {
 
 
 function buffer:new(callback, bufferSize)
-    buffer.list = {}
-    buffer.callback = callback
+    self.list = {}
+    self.callback = callback
     
     if bufferSize ~= nil and bufferSize > 0 then
-        buffer.bufferSize = bufferSize
+        self.bufferSize = bufferSize
     else
-        buffer.bufferSize = 4
+        self.bufferSize = 4
     end
     
-    buffer.first = 0
+    self.first = 0
 end
 
 
 function buffer:sendRequest()
-    if buffer.first > 0 then
-        if buffer.debug then
+    if self.first > 0 then
+        if self.debug then
             print('======== Payload to be send ========')
-            for i = 1, buffer.first do
-                print (buffer.list[i])
+            for i = 1, self.first do
+                print (self.list[i])
             end
             print('========== End of Payload ==========')
         end
 
-        buffer.first = 0
-        buffer.callback()
+        self.first = 0
+        self.callback()
     end
 end
 
 
 function buffer:add(value)
     if value ~= nil then
-        buffer.first = buffer.first + 1
-        buffer.list[buffer.first] = value
+        self.first = self.first + 1
+        self.list[self.first] = value
         
-        if buffer.debug then
+        if self.debug then
             print('Adding ' .. value)
         end
     end
     
-    if buffer.first >= buffer.bufferSize then
-        buffer:sendRequest()
+    if self.first >= self.bufferSize then
+        self:sendRequest()
     end
 end
+
 
 
 return buffer
