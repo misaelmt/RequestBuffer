@@ -1,3 +1,10 @@
+--[[
+Request buffer to send multiple requests to a server in one call.
+Copyright (c) 2015 Misael Madrigal
+https://github.com/misaelmt/LogglyBufferMod
+]]--
+
+
 local buffer = {
     list = nil,
     callback = nil,
@@ -32,8 +39,8 @@ function buffer:sendRequest()
             print('========== End of Payload ==========')
         end
 
-        self.first = 0
         self.callback()
+        self.first = 0
     end
 end
 
