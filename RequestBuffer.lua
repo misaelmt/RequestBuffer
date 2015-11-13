@@ -9,7 +9,7 @@ local buffer = {
     list = nil,
     callback = nil,
     bufferSize = nil,
-    first = nil,
+    last = nil,
     
     debug = false,
 }
@@ -25,37 +25,37 @@ function buffer:new(callback, bufferSize)
         self.bufferSize = 4
     end
     
-    self.first = 0
+    self.last = 0
 end
 
 
 function buffer:sendRequest()
-    if self.first > 0 then
+    if self.last > 0 then
         if self.debug then
             print('======== Payload to be send ========')
-            for i = 1, self.first do
+            for i = 1, self.last do
                 print (self.list[i])
             end
             print('========== End of Payload ==========')
         end
 
         self.callback()
-        self.first = 0
+        self.last = 0
     end
 end
 
 
 function buffer:add(value)
     if value ~= nil then
-        self.first = self.first + 1
-        self.list[self.first] = value
+        self.last = self.last + 1
+        self.list[self.last] = value
         
         if self.debug then
             print('Adding ' .. value)
         end
     end
     
-    if self.first >= self.bufferSize then
+    if self.last >= self.bufferSize then
         self:sendRequest()
     end
 end
