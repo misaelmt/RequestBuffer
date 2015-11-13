@@ -1,4 +1,4 @@
-require "CiderDebugger";local buffer = require 'RequestBuffer'
+local buffer = require 'RequestBuffer'
 
 
 local function f()
@@ -31,3 +31,5 @@ local myTable = {
 buffer:add(tostring(myTable))
 buffer:add(tostring("Hello\nworld"))
 
+local str = "Hello\nworld"
+print("str: " .. str:gsub("\n", ""))

@@ -38,13 +38,13 @@ function buffer:sendRequest()
 end
 
 
-function buffer:add(jsonValue)
-    if jsonValue ~= nil then
+function buffer:add(value)
+    if value ~= nil then
         buffer.first = buffer.first + 1
-        buffer.list[buffer.first] = jsonValue
+        buffer.list[buffer.first] = value
         
         if buffer.debug then
-            print('Adding ' .. jsonValue)
+            print('Adding ' .. value)
         end
     end
     
